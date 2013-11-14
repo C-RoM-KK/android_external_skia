@@ -261,6 +261,11 @@ void SkBitmap::getBounds(SkIRect* bounds) const {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+extern "C" void _ZN8SkBitmap9setConfigENS_6ConfigEiii(SkBitmap *bitmap,
+        SkBitmap::Config c, int width, int height, int rowBytes) {
+    bitmap->setConfig(c, width, height, (size_t) rowBytes);
+}
+
 static bool validate_alphaType(SkBitmap::Config config, SkAlphaType alphaType,
                                SkAlphaType* canonical = NULL) {
     switch (config) {
